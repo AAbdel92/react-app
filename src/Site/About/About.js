@@ -6,13 +6,23 @@ export default class About extends Component {
 
     test = () => {
 
-        axios.get("http://localhost:8080/api/utilisateur/listeUtilisateur")
-        .then(function(data)  {
-            console.log(data);
-        })
-        .catch(function(err) {
-            console.log(err);
-        })
+        // axios.get("http://localhost:8080/api/utilisateur/listeUtilisateur")
+        // .then(function(data)  {
+        //     console.log(data);
+        // })
+        // .catch(function(err) {
+        //     console.log(err);
+        // })
+        // axios({
+        //     method: "GET",
+        //     url: 'http://localhost:8080/api/utilisateur/listeUtilisateur',
+        //     withCredentials: true,
+        //     crossDomain: true            
+        // }).then(function (data) {
+        //     console.log(data)
+        // }).catch(function(error) {
+        //     console.log(error)
+        // });
         
         // axios.get('http://localhost:8080/api/utilisateur/listeUtilisateur',{withCredentials : true})
         //     .then(function (data) {
@@ -25,6 +35,13 @@ export default class About extends Component {
         //         console.log(err);
         //         console.log("///------------------------------------------///");
         //     });
+        fetch('http://localhost:8080/api/utilisateur/listeUtilisateur', {withCredentials : true, credentials : "include"})
+        .then(function (data) {
+            console.log(data)
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
     }
     render() {
         return (

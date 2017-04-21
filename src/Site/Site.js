@@ -15,23 +15,28 @@ const history = createBrowserHistory();
 
 class Site extends Component {
 
-    componentDidMount() {
-        // var config = {
-        //     header : {
-        //         "Access-Control-Allow-Origin" : "http://localhost:3000"
-        //     }
-        // }
-        axios.get('http://localhost:8080/api/utilisateur/listeUtilisateur')
-            .then(function (data) {
-                console.log("///------------------------------------------///");
-                console.log(data);
-                console.log("///------------------------------------------///");
-            })
-            .catch(function (err) {
-                console.log("///------------------------------------------///");
-                console.log(err);
-                console.log("///------------------------------------------///");
-            });
+    componentDidMount() {      
+        // axios.get('http://localhost:8080/api/utilisateur/listeUtilisateur', crossDomain: true)
+        //     .then(function (data) {
+        //         console.log("///------------------------------------------///");
+        //         console.log(data);
+        //         console.log("///------------------------------------------///");
+        //     })
+        //     .catch(function (err) {
+        //         console.log("///------------------------------------------///");
+        //         console.log(err);
+        //         console.log("///------------------------------------------///");
+        //     });
+        axios({
+            method: "GET",
+            url: 'http://localhost:8080/api/utilisateur/listeUtilisateur',
+            withCredentials: true,
+            crossDomain: true            
+        }).then(function (data) {
+            console.log(data)
+        }).catch(function(error) {
+            console.log(error)
+        });
     }
 
     render() {

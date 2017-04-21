@@ -12,18 +12,19 @@ constructor (props) {
 } 
 
     login = () => {
+        const monState = this;
         // var config = {
         //     header : {
         //         "Access-Control-Allow-Origin" : "http://localhost:3000"
         //     }
         // }
         console.log(document.getElementById("username").value)
-        axios.post('http://localhost:8080/login?username=' + document.getElementById("username").value + '&password=' + document.getElementById("password").value)
+        axios.post('http://localhost:8080/login?username=' + document.getElementById("username").value + '&password=' + document.getElementById("password").value, {withCredentials : true})
         .then(function (response) {
             if (response.status === 200 ) {
-                this.setState({
-            affichageLog : "Log Out"
-        })
+                monState.setState({
+                    affichageLog : "Log Out"
+                });               
             }
         })
         
